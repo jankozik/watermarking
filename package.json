@@ -7,6 +7,10 @@
     "dev": "babel src -d dist --watch",
     "build": "babel src -d dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Liugq5713/watermarkToDiv.git"
+  },
   "author": "liugq",
   "license": "MIT",
   "devDependencies": {
