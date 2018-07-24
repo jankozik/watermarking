@@ -2,7 +2,7 @@ const config = {
   text: 'Hello world',
   density: 1,
   rotate: -1 / 6 * Math.PI,
-  font: '26px serif',
+  font: '16px serif',
   z_index: 2018,
   color: 'rgba(151,168,190,0.6)'
 }
