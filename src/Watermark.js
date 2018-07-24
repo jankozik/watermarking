@@ -79,6 +79,7 @@ class Watermark {
   }
   embed(el) {
     if (!document.querySelector(el)) {
+      console.error('el is ' + document.querySelector(el))
       return
     }
     const contain_el = document.querySelector(el)
