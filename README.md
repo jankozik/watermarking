@@ -1,9 +1,6 @@
-<!-- markdownlint-disable MD033 -->
 <p align="center">
   <img width="320" src="./logo.svg">
 </p>
-
-# watermark to div
 
 ## demo
 
