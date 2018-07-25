@@ -1,6 +1,6 @@
 {
   "name": "watermark-div",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "a beautiful watermak to your html element",
   "main": "dist/Watermark.js",
   "scripts": {
