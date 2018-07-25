@@ -26,7 +26,7 @@ git@github.com:Liugq5713/watermarkToDiv.git
 npm
 
 ```js
-npm install watermark-div
+npm install --dev-save watermark-div
 ```
 
 ## How to use
@@ -47,8 +47,9 @@ watermark.embed(contain_el)
 |Name|Type|Default|Description|
 |------|------|------|------|
 |text|String|'Hello world'|the text as watermark
+|font|String|'16px serif'|Font size and the style of text
+|opacity|Number|0.6|the opactity of watermark
 |density|number| 1|the density of watermark
 |rotate|rad| -1 / 6 * Math.PI|the rotate of watermark
 |z_index|number|2018|the element's z-index which has watermark|
-|font|String|'16px serif'|Font size and the style of text
 |color|String|'rgba(151,168,190,0.6)'|Text color, you can use HEX or RGBA color codes
