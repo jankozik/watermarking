@@ -1,16 +1,18 @@
 const config = {
   text: 'Hello world',
+  font: '16px serif',
+  opacity: 0.6,
   density: 1,
   rotate: -1 / 6 * Math.PI,
-  font: '16px serif',
   z_index: 2018,
-  color: 'rgba(151,168,190,0.6)'
+  color: 'rgba(151,168,190)'
 }
 
 class Watermark {
-  constructor({ text = config.text, density = config.density, rotate = config.rotate, z_index = config.z_index, font = config.font, color = config.color } = config) {
+  constructor({ text = config.text, opacity = config.opacity, density = config.density, rotate = config.rotate, z_index = config.z_index, font = config.font, color = config.color } = config) {
     this.text = text
     this.density = density
+    this.opacity = opacity
     this.rotate = rotate
     this.z_index = z_index
     this.font = font
@@ -92,6 +94,7 @@ class Watermark {
       width: 100%;
       height: 100%;
       background-image:url('${watermark_img}');
+      opacity:0.6;
       z-index:${this.z_index};
       pointer-events: none;
     `)

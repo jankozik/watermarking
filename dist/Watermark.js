@@ -23,11 +23,12 @@
 
   var config = {
     text: 'Hello world',
+    font: '16px serif',
+    opacity: 0.6,
     density: 1,
     rotate: -1 / 6 * Math.PI,
-    font: '26px serif',
     z_index: 2018,
-    color: 'rgba(151,168,190,0.6)'
+    color: 'rgba(151,168,190)'
   };
 
   var Watermark = function () {
@@ -37,6 +38,8 @@
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : config,
           _ref$text = _ref.text,
           text = _ref$text === undefined ? config.text : _ref$text,
+          _ref$opacity = _ref.opacity,
+          opacity = _ref$opacity === undefined ? config.opacity : _ref$opacity,
           _ref$density = _ref.density,
           density = _ref$density === undefined ? config.density : _ref$density,
           _ref$rotate = _ref.rotate,
@@ -52,6 +55,7 @@
 
       this.text = text;
       this.density = density;
+      this.opacity = opacity;
       this.rotate = rotate;
       this.z_index = z_index;
       this.font = font;
@@ -120,6 +124,7 @@
 
     Watermark.prototype.embed = function embed(el) {
       if (!document.querySelector(el)) {
+        console.error('el is ' + document.querySelector(el));
         return;
       }
       var contain_el = document.querySelector(el);
@@ -127,7 +132,7 @@
       var watermark_img = this._compositeStamp();
 
       var watermark_div = document.createElement('div');
-      watermark_div.setAttribute('style', '\n      position:absolute;\n      width: 100%;\n      height: 100%;\n      background-image:url(\'' + watermark_img + '\');\n      z-index:' + this.z_index + ';\n      pointer-events: none;\n    ');
+      watermark_div.setAttribute('style', '\n      position:absolute;\n      width: 100%;\n      height: 100%;\n      background-image:url(\'' + watermark_img + '\');\n      opacity:0.6;\n      z-index:' + this.z_index + ';\n      pointer-events: none;\n    ');
       contain_el.style.position = 'relative';
       contain_el.insertBefore(watermark_div, contain_el.firstChild);
     };
