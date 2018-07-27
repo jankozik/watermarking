@@ -15,7 +15,7 @@
 ### Defact
 
 1.  watermark will set the position of the element for relative which contain the watermark
-2.  when you set abnormal options of the wartemark like `font:'226px serif'`,`rotate:13/24*Math.PI`.the watermark will only show a part of it and you could fix the issue by set other options.
+2.  when you set abnormal options of the wartemark like `font:'226px serif'`,`rotate:13/24*Math.PI`.the watermark will only show a part of it and you could fix the issue by set yOffset which control the start point of the text.
 
 ## Download
 
@@ -55,3 +55,4 @@ watermark.embed(contain_el)
 | rotate  | rad    | -1 / 6 \* Math.PI       | the rotate of watermark                         |
 | z_index | number | 2018                    | the element's z-index which has watermark       |
 | color   | String | 'rgba(151,168,190,0.6)' | Text color, you can use HEX or RGBA color codes |
+| yOffset | number | 3                       | control the start point of text                 |

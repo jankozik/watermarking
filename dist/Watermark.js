@@ -28,7 +28,8 @@
     density: 1,
     rotate: -1 / 6 * Math.PI,
     z_index: 2018,
-    color: 'rgba(151,168,190)'
+    color: 'rgba(151,168,190)',
+    yOffset: 3
   };
 
   var Watermark = function () {
@@ -69,7 +70,7 @@
         ctx.font = _this.font;
         var fontSize = _this.font.replace(/(\d+)(?=px).*/, '$1');
         var text = ctx.measureText(_this.text);
-        var txtLen = text.width + fontSize * 3;
+        var txtLen = text.width + fontSize * _this.yOffset;
 
         canvasEl.width = txtLen * 2;
         canvasEl.height = txtLen * 2;
@@ -78,7 +79,7 @@
         ctx.rotate(_this.rotate);
         ctx.fillStyle = _this.color;
         ctx.font = _this.font;
-        ctx.fillText(_this.text, fontSize * 3, 0);
+        ctx.fillText(_this.text, fontSize * _this.yOffset, 0);
 
         return canvasEl;
       };

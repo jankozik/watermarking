@@ -3,13 +3,22 @@ const config = {
   font: '16px serif',
   opacity: 0.6,
   density: 1,
-  rotate: -1 / 6 * Math.PI,
+  rotate: (-1 / 6) * Math.PI,
   z_index: 2018,
-  color: 'rgba(151,168,190)'
+  color: 'rgba(151,168,190)',
+  yOffset: 3
 }
 
 class Watermark {
-  constructor({ text = config.text, opacity = config.opacity, density = config.density, rotate = config.rotate, z_index = config.z_index, font = config.font, color = config.color } = config) {
+  constructor({
+    text = config.text,
+    opacity = config.opacity,
+    density = config.density,
+    rotate = config.rotate,
+    z_index = config.z_index,
+    font = config.font,
+    color = config.color
+  } = config) {
     this.text = text
     this.density = density
     this.opacity = opacity
@@ -26,7 +35,7 @@ class Watermark {
       ctx.font = this.font
       const fontSize = this.font.replace(/(\d+)(?=px).*/, '$1')
       const text = ctx.measureText(this.text)
-      const txtLen = text.width + fontSize * 3
+      const txtLen = text.width + fontSize * this.yOffset
 
       canvasEl.width = txtLen * 2
       canvasEl.height = txtLen * 2
@@ -35,7 +44,7 @@ class Watermark {
       ctx.rotate(this.rotate)
       ctx.fillStyle = this.color
       ctx.font = this.font
-      ctx.fillText(this.text, fontSize * 3, 0)
+      ctx.fillText(this.text, fontSize * this.yOffset, 0)
 
       return canvasEl
     }
@@ -52,29 +61,118 @@ class Watermark {
       const ctx = canvasEl.getContext('2d')
       ctx.translate(len, len)
 
-
       const sinValueByRotate = Math.sin(this.rotate)
       const cosValueByRotate = Math.cos(this.rotate)
 
       //  上左
-      if (sinValueByRotate <= 0 && sinValueByRotate > -1 && cosValueByRotate > 0 && cosValueByRotate <= 1) {
-        ctx.drawImage(stamp, stampLen, 0, stampLen, stampLen, 0, 0, stampLen, stampLen)
-        ctx.drawImage(stamp, stampLen, 0, stampLen, stampLen, -len, -len, stampLen, stampLen)
+      if (
+        sinValueByRotate <= 0 &&
+        sinValueByRotate > -1 &&
+        cosValueByRotate > 0 &&
+        cosValueByRotate <= 1
+      ) {
+        ctx.drawImage(
+          stamp,
+          stampLen,
+          0,
+          stampLen,
+          stampLen,
+          0,
+          0,
+          stampLen,
+          stampLen
+        )
+        ctx.drawImage(
+          stamp,
+          stampLen,
+          0,
+          stampLen,
+          stampLen,
+          -len,
+          -len,
+          stampLen,
+          stampLen
+        )
       }
       // 上右
-      if (sinValueByRotate < 0 && sinValueByRotate >= -1 && cosValueByRotate <= 0 && cosValueByRotate < 1) {
+      if (
+        sinValueByRotate < 0 &&
+        sinValueByRotate >= -1 &&
+        cosValueByRotate <= 0 &&
+        cosValueByRotate < 1
+      ) {
         ctx.drawImage(stamp, 0, 0, stampLen, stampLen, 0, 0, stampLen, stampLen)
-        ctx.drawImage(stamp, 0, 0, stampLen, stampLen, -len, -len, stampLen, stampLen)
+        ctx.drawImage(
+          stamp,
+          0,
+          0,
+          stampLen,
+          stampLen,
+          -len,
+          -len,
+          stampLen,
+          stampLen
+        )
       }
       // 下右
-      if (sinValueByRotate >= 0 && sinValueByRotate < 1 && cosValueByRotate < 0 && cosValueByRotate >= -1) {
-        ctx.drawImage(stamp, 0, stampLen, stampLen, stampLen, 0, 0, stampLen, stampLen)
-        ctx.drawImage(stamp, 0, stampLen, stampLen, stampLen, -len, -len, stampLen, stampLen)
+      if (
+        sinValueByRotate >= 0 &&
+        sinValueByRotate < 1 &&
+        cosValueByRotate < 0 &&
+        cosValueByRotate >= -1
+      ) {
+        ctx.drawImage(
+          stamp,
+          0,
+          stampLen,
+          stampLen,
+          stampLen,
+          0,
+          0,
+          stampLen,
+          stampLen
+        )
+        ctx.drawImage(
+          stamp,
+          0,
+          stampLen,
+          stampLen,
+          stampLen,
+          -len,
+          -len,
+          stampLen,
+          stampLen
+        )
       }
       // 下左
-      if (sinValueByRotate > 0 && sinValueByRotate <= 1 && cosValueByRotate >= 0 && cosValueByRotate < 1) {
-        ctx.drawImage(stamp, stampLen, stampLen, stampLen, stampLen, 0, 0, stampLen, stampLen)
-        ctx.drawImage(stamp, stampLen, stampLen, stampLen, stampLen, -len, -len, stampLen, stampLen)
+      if (
+        sinValueByRotate > 0 &&
+        sinValueByRotate <= 1 &&
+        cosValueByRotate >= 0 &&
+        cosValueByRotate < 1
+      ) {
+        ctx.drawImage(
+          stamp,
+          stampLen,
+          stampLen,
+          stampLen,
+          stampLen,
+          0,
+          0,
+          stampLen,
+          stampLen
+        )
+        ctx.drawImage(
+          stamp,
+          stampLen,
+          stampLen,
+          stampLen,
+          stampLen,
+          -len,
+          -len,
+          stampLen,
+          stampLen
+        )
       }
       return canvasEl.toDataURL()
     }
@@ -89,7 +187,9 @@ class Watermark {
     const watermark_img = this._compositeStamp()
 
     const watermark_div = document.createElement('div')
-    watermark_div.setAttribute('style', `
+    watermark_div.setAttribute(
+      'style',
+      `
       position:absolute;
       width: 100%;
       height: 100%;
@@ -97,9 +197,10 @@ class Watermark {
       opacity:0.6;
       z-index:${this.z_index};
       pointer-events: none;
-    `)
+    `
+    )
     contain_el.style.position = 'relative'
-    contain_el.insertBefore(watermark_div, contain_el.firstChild);
+    contain_el.insertBefore(watermark_div, contain_el.firstChild)
   }
 }
 export default Watermark
