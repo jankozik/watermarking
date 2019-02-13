@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git@github.com:Liugq5713/watermarkToDiv.git"
   },
+  "keywords": [
+    "watermark",
+    "watermark to div"
+  ],
   "author": "liugq",
   "license": "MIT",
   "devDependencies": {
@@ -23,7 +27,8 @@
   "eslintConfig": {
     "extends": "eslint:recommended",
     "env": {
-      "browser": true
+      "browser": true,
+      "es6": true
     }
   },
   "babel": {
