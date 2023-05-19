@@ -2,10 +2,6 @@
   <img width="320" src="./logo.svg">
 </p>
 
-## demo
-
-[https://liugq5713.github.io/watermarkToDiv/](https://liugq5713.github.io/watermarkToDiv/)
-
 ## Features
 
 1.  Using a text to stamp
@@ -22,13 +18,13 @@
 Git
 
 ```js
-git@github.com:Liugq5713/watermarkToDiv.git
+git@github.com:jankozik/watermarking.git
 ```
 
 npm
 
 ```js
-npm install --dev-save watermark-div
+npm install --dev-save watermarking
 ```
 
 ## How to use
@@ -36,7 +32,7 @@ npm install --dev-save watermark-div
 ### Usage
 
 ```js
-import Watermark from 'watermark-div'
+import Watermark from 'watermarking'
 
 const OPTIONS = { text: 'Hello World' }
 const watermark = new Watermark(OPTIONS)
