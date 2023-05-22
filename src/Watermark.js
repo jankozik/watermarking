@@ -54,7 +54,7 @@ class Watermark {
       const stampLen = stamp.getAttribute('width') / 2
 
       const canvasEl = document.createElement('canvas')
-      //保证水印可以完全展示
+      //Ensure that the watermark can be fully displayed
       const len = 200 * this.density > stampLen ? 200 * this.density : stampLen
       canvasEl.width = len * 2
       canvasEl.height = len * 2
@@ -64,7 +64,7 @@ class Watermark {
       const sinValueByRotate = Math.sin(this.rotate)
       const cosValueByRotate = Math.cos(this.rotate)
 
-      //  上左
+      //  upper left
       if (
         sinValueByRotate <= 0 &&
         sinValueByRotate > -1 &&
@@ -94,7 +94,7 @@ class Watermark {
           stampLen
         )
       }
-      // 上右
+      // upper right
       if (
         sinValueByRotate < 0 &&
         sinValueByRotate >= -1 &&
@@ -114,7 +114,7 @@ class Watermark {
           stampLen
         )
       }
-      // 下右
+      // down right
       if (
         sinValueByRotate >= 0 &&
         sinValueByRotate < 1 &&
@@ -144,7 +144,7 @@ class Watermark {
           stampLen
         )
       }
-      // 下左
+      // down left
       if (
         sinValueByRotate > 0 &&
         sinValueByRotate <= 1 &&
